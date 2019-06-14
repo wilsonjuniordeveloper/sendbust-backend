@@ -7,7 +7,7 @@ const cors = require('cors')
 
 
 let app = express();
-app.use(cors())
+app.use(cors({origin: 'https://sendbust-frontend.herokuapp.com'}))
 app.use(bodyParser.urlencoded({extended: false }))
 app.use(bodyParser.json())
 
