@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const nodemailer = require("nodemailer");
 const csv = require('csvtojson/v1');
 const schedule = require('node-schedule');
-
+const cors = require('cors')
 
 
 let app = express();
@@ -24,7 +24,7 @@ app.get('/', function (req, res) {
 
 
 
-app.post('/send', function (req, res) {
+app.post('/send', cors(), function (req, res) {
 
 
     var sendlist = req.body.list;
