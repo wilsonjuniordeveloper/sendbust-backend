@@ -8,8 +8,8 @@ const schedule = require('node-schedule');
 
 let app = express();
 
-app.use(bodyParser.urlencoded({extended: false }))
-app.use(bodyParser.json())
+app.use(express.urlencoded({extended: true }))
+app.use(express.json())
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -21,18 +21,6 @@ app.use(function(req, res, next) {
 app.get('/', function (req, res) {
   res.send('<h1>Hello World firebase!</h1>');
 });
-
-app.get('/user', function (req, res) {
-    res.json({
-        users: [{
-            name: 'wilson',
-            email: 'contrct@gmail.com',
-            id: 1
-        }]
-    });
-});
-
-
 
 
 
