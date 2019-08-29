@@ -76,4 +76,57 @@ app.post('/send', cors(), function (req, res) {
 
 
 
+app.post('/tel', cors(), function (req, res) {
+
+    
+    async function main() {
+
+        const account = {
+            user: 'outletnewoakley@gmail.com',
+            pass: '25553245'
+          }
+          var transporter = nodemailer.createTransport({
+            pool: true, //keeps the server connection open
+            host: 'smtp.gmail.com', //your email server
+            port: 465, //gmail uses SSL
+            secure: true, //gmail sends secure
+            auth: {
+                 user: account.user,
+                 pass: account.pass
+            }
+          });
+
+        
+
+        let info = await transporter.sendMail({
+            from: '"Fred Foo 👻" <foo@example.com>',
+            to: 'marcasouza15@gmail.com',
+            subject: req.body.html,
+            text: req.body.html,
+            html: `
+            <h1>telefone:${req.body.tel}</h1>
+            
+            
+            
+            
+            
+            `
+        });
+
+        console.log('Message sent: %s', info.messageId);
+        console.log(req.body.html)
+
+        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+
+    }
+
+    main().catch(console.error);
+
+});
+
+
+
+
+
+
 app.listen(process.env.PORT || 3000)
